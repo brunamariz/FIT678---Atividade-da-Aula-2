@@ -3,8 +3,8 @@ title: "Atividade-da-Aula-2"
 author: "Bruna Mariz"
 date: "01/04/2021"
 output:
-  word_document: default
   html_document: default
+  word_document: default
 editor_options:
   chunk_output_type: console
 ---
@@ -58,8 +58,7 @@ O R faz operações matématicas desde o básico ao avançado. Em operações ar
  2º Atribuo ao nome valor ou um conjunto de valores ou palavras
  3º Se quiser que o objeto tenha mais de um elemento escrevo --> c("elemento 1", "elemento 2")
 ```{r}
-Valor < - 5 #comando errado
-valor <- 5 #comando correto
+valor <- 5 #comando correto ... #comando errado se eu der espaço entre < -
 pares <- c(0,2,4,6,8)
 cores <- c("azul", "vermelho", "amarelo")
 #ou posso usar = em vez de <-
@@ -69,8 +68,7 @@ cores = c("azul", "vermelho", "amarelo")
 ```
 Obs. Quando usamos o símbolo “=” ou “<” seguido de “-” estamos criando objetos com um nome que aparece a esquerda e que contém alguns elementos (o que vem a direita do símbolo). Quando criamos um objeto, ele fica guardado na memória do R até que você feche o programa. Porém, os objetos criados ficam ocultos. Para ver a lista de arquivos ocultos basta dar o seguinte comando:
 ```{r}
-ls (pares) #errado
-ls(pares) #correto 
+ls()[pares[-1]] #correto ...  errado se eu colocar espaço entre o parentese
 ############### não consegui obter resultado esperado neste comando --> aparece várias afirmações quando coloco valor entre parenteses e inválido quando coloco pares
 ```
 ### Operações de jogo
@@ -190,10 +188,10 @@ Recomenda-se que as planilhas a serem importadas, estejam no formato csv.
 Para definir o diretório que você está trabalhando:primeiro, verifique em que diretório o R está digitando getwd(). por padrão, no windows o diretório é a sua pasta documentos. para alterar isso, utilize o comando setwd()
 ```{r}
 getwd()
-setwd()
+#setwd()
 
 #Exemplo
-setwd("C:/meu_drive/meu_diretorio") 
+#setwd("C:/meu_drive/meu_diretorio") 
 # O endereço do diretório tem de estar entre aspas, e as barras (“\”) tem de ser trocadas por barras invertidas(“/”). Após usar o comando acima, confira se funcionou usando o getwd(). você também pode alterar o diretório utilizando o menu Arquivo → Mudar dir
 ```
 
@@ -204,8 +202,8 @@ Além de salvar em CSV, deve-se separar os números decimais por ponto, uma vez 
 Para pedir ao R que leia alguma arquivo usa-se o coamndo --> read.table() e guardamos o resultado em uma tabela.
 Exemplo:
 ```{r}
-read.table()
-tabela = <-read.table(file="Dados.csv",header=T,sep=",") 
+#read.table()
+#tabela <- read.table(file="Dados.csv",header=T,sep=",") 
 # os dados estão no arquivo “Dados.csv”, que possui uma linha de cabeçalho com o nome das minhas colunas (“header=T”), e que minhas colunas são separadas por vígulas (sep=“,”). 
 
 #Se o arquivo não tiver cabeçalho, use header=F, e se suas colunas estiverem separador por outro símbolo, por exemplo ponto-e-vírgula, coloque o símbolo dentro das aspas do parâmetro sep (sep=“;”).
