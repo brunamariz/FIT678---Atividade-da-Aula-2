@@ -1,0 +1,212 @@
+---
+title: "Atividade-da-Aula-2"
+author: "Bruna Mariz"
+date: "01/04/2021"
+output:
+  word_document: default
+  html_document: default
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Atividade da Aula 2
+
+Passo a passo que me fizeram chegar até aqui:
+
+1º  Criar repositório do projeto no Github (Acessar conta no Github)
+
+2º Criação do Projeto no RStudio (Abro o R; Sandbox - New projet; abre a acaixa de texto; escolho Version Control; Escolho Git; Preencho os capos do repositório com o link que fiz no Github; Aperto em criar)
+
+3º Agora crio meu arquivo no RMarkdown
+(File; New File; Rmarkdown; Preencho o título)
+
+4º Salvo o arquivo de trabalho no meu computador
+(clico no disquete e salvo na pasta que eu quero --> salvar arquivo na extensão rmt de Rmarkdown)
+
+
+## Testando tutorial de introdução ao R da web 
+
+Nessa atividade escolhi um tutorial de introdução ao R encontrado no site http://ecovirtual.ib.usp.br/doku.php?id=ecovirt:roteiro:soft:rprincip
+
+Escolhi esse tuturial por ter os comandos bem explicados e com exemplos nos chunks
+
+Quero testar todos os comandos que eles fazem referência
+
+obs. ```{r} sempre abre o chunk (primeira linha) e ''' fecha o chunk (última linha) --> se eu coloco algum comando junto as de abertura e fechamento do chunk, a afirmativa não é lida 
+
+As linhas de comando vão sempre ficar no chunk
+As respostas dos chunks vão estar no console (tela abaixo a esta)
+No console será repetido a operação do chunk (em azul) e a resposta ser logo abaixo em preto
+Sempre antes do resultado, aparece um [1]--> Isso é um contador (exemplo 1:100)
+
+### Operações Aritméticas
+O R faz operações matématicas desde o básico ao avançado. Em operações aritméticas, basta colocar o símbolo como se fosse na calculadora convencional
+```{r}
+2+2
+5-1
+2*3
+4/5
+      1:100 #demonstração que [1]é um contador --> a cada linha da sequência de 1 a 100 aparece [número em que inicia a linha]
+```
+### Operações com objetos
+ No R é possivel criar ou fazer referência a objetos.
+ 1º Escolho um nome
+ 2º Atribuo ao nome valor ou um conjunto de valores ou palavras
+ 3º Se quiser que o objeto tenha mais de um elemento escrevo --> c("elemento 1", "elemento 2")
+```{r}
+Valor < - 5 #comando errado
+valor <- 5 #comando correto
+pares <- c(0,2,4,6,8)
+cores <- c("azul", "vermelho", "amarelo")
+#ou posso usar = em vez de <-
+valor = 5
+pares = c(0,2,4,6,8)
+cores = c("azul", "vermelho", "amarelo")
+```
+Obs. Quando usamos o símbolo “=” ou “<” seguido de “-” estamos criando objetos com um nome que aparece a esquerda e que contém alguns elementos (o que vem a direita do símbolo). Quando criamos um objeto, ele fica guardado na memória do R até que você feche o programa. Porém, os objetos criados ficam ocultos. Para ver a lista de arquivos ocultos basta dar o seguinte comando:
+```{r}
+ls (pares) #errado
+ls(pares) #correto 
+############### não consegui obter resultado esperado neste comando --> aparece várias afirmações quando coloco valor entre parenteses e inválido quando coloco pares
+```
+### Operações de jogo
+Pode-se jogar com os dados no R. Funciona como? a cada vez que você roda uma amostra o R faz um sorteio..
+```{r}
+moeda <- c("cara","coroa")
+moeda
+sample(moeda,1)
+sample(moeda,1)
+sample(moeda,1)
+sample(moeda,1)
+```
+```{r}
+dado <- c(1:6)
+dado
+sample(dado,1)
+sample(dado,1)
+sample(dado,1)
+```
+
+### Matrizes
+Transforma um conjunto de dados em uma matriz.
+Ele dispõe todos os valores de acordo com o tanto de linhas e colunas que você pedir. Por isso é importante que a dimensão da matrix comporte de fato seus dados ou utilize um comando que dê várias matrizes com seus dados.
+```{r}
+1:100
+matrix(1:100,nrow=20,ncol=5) #nrow define o número de linhas (20) e ncol o de colunas (5)
+```
+
+```{r}
+array(1:100,dim=c(5,5,4)) # o argumento agora é dim... deve conter os valores de cada dimensão c('linha', 'colunas', 'matriz')--> O resultado aparece como fatias de um bolo, onde cada camada é uma matriz
+```
+### Objetos vázios
+Nesse comando os objetos são vázios ou não uteis. Usamos NA --> não se aplica, ou seja, aquela posição não está sendo ocupada por nenhum valor
+```{r}
+a=rep(NA,10)
+a
+
+b=matrix(NA,nrow=3,ncol=3)
+b
+
+c=array(NA,dim=c(3,3,3))
+c
+```
+Por que fazer isso?
+Depois preenchemos os lugares vazios com outros valores do nosso interesse
+```{r}
+a[1]=2
+a
+a[1]
+
+b[3,3]="oi"
+b
+b[2,2]="oi"
+b
+b[1,1]="oi"
+b
+b[3,3]
+
+c[3,3,1]="oi"
+c
+c[3,3,2]="ai"
+c
+c[3,3,3]="ui"
+c
+c[3,3,3]
+```
+obs. Os comandos acima servem para indexar também.. ou seja, dizem a posição de um objeto. 
+Quando coloco a em seguida a posição do valor da matriz entre colchetes  (nome [posição]). 
+
+No caso da matriz b (tridimensional) coloco --> nome[número da linha, número da coluna]
+
+Se for a matriz c (tridimensional) coloco --> nome[número da linha, número da coluna, número da fatia do bolo]
+
+
+
+### Gráficos
+Segue abaixo vários tipos de gráficos: 
+Linear
+Histograma
+Boxplot
+
+```{r}
+plot(1:10,10:1)
+plot(1:10,10:1,pch=2)
+plot(1:10,10:1,pch=2,col=2)
+plot(1:10,10:1,pch=2,xlab="eixo x")
+plot(1:10,10:1,pch=2,xlab="eixo x",ylab="eixo y")
+
+
+hist(rnorm(1000),col=33)
+arrows(2,100,2,70,col=2)
+
+boxplot(iris$Sepal.Length~iris$Species)
+```
+
+### Funções no R
+Mais complicado, pois exige mais raciocinio logico na hora de montar a função que se adeque de fato ao seu objetivo.
+```{r}
+media=function(objeto){sum(objeto)/length(objeto)} # sum --> soma e Length --> quantidade
+media(c(1,2,3))
+
+alturas=c(1.4,1.7,2.0,1.6,1.8)
+media(alturas)  
+
+#Fazendo soma, número de elementos e média separados
+
+sum(alturas)    # soma dos elementos do objeto "alturas"
+length(alturas) # número de elementos do objeto "alturas"
+mean(alturas)   # média dos elementos do objeto "alturas"
+
+```
+
+### Carregando Arquivos no R
+São comandos que permitem a entrada de dados no R, sem precisar que estes sejam digitados todas as vezes que forem ser utilizados.
+Recomenda-se que as planilhas a serem importadas, estejam no formato csv. 
+
+Para definir o diretório que você está trabalhando:primeiro, verifique em que diretório o R está digitando getwd(). por padrão, no windows o diretório é a sua pasta documentos. para alterar isso, utilize o comando setwd()
+```{r}
+getwd()
+setwd()
+
+#Exemplo
+setwd("C:/meu_drive/meu_diretorio") 
+# O endereço do diretório tem de estar entre aspas, e as barras (“\”) tem de ser trocadas por barras invertidas(“/”). Após usar o comando acima, confira se funcionou usando o getwd(). você também pode alterar o diretório utilizando o menu Arquivo → Mudar dir
+```
+
+###Formatação e leitura de arquivos
+
+Além de salvar em CSV, deve-se separar os números decimais por ponto, uma vez que o R segue padrão americano.
+
+Para pedir ao R que leia alguma arquivo usa-se o coamndo --> read.table() e guardamos o resultado em uma tabela.
+Exemplo:
+```{r}
+read.table()
+tabela = <-read.table(file="Dados.csv",header=T,sep=",") 
+# os dados estão no arquivo “Dados.csv”, que possui uma linha de cabeçalho com o nome das minhas colunas (“header=T”), e que minhas colunas são separadas por vígulas (sep=“,”). 
+
+#Se o arquivo não tiver cabeçalho, use header=F, e se suas colunas estiverem separador por outro símbolo, por exemplo ponto-e-vírgula, coloque o símbolo dentro das aspas do parâmetro sep (sep=“;”).
+```
